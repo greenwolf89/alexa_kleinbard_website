@@ -1,0 +1,35 @@
+.page {
+  padding: 2rem 1.5rem 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.backLink {
+  display: inline-block;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.backLink:hover {
+  color: var(--luminous);
+}
+
+.title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin: 0 0 0.25rem;
+  color: var(--text);
+}
+
+.years {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+}
+
+.paragraph {
+  max-width: 60ch;
+  color: var(--text);
+  line-height: 1.6;
+  margin: 0 0 2rem;
+}

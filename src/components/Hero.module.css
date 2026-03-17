@@ -1,0 +1,15 @@
+.hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.artwork {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: middle;
+  object-fit: cover;
+  object-position: center;
+}

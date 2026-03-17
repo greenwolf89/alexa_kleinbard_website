@@ -1,0 +1,66 @@
+:root {
+  /* Immersive palette from artwork: deep blues, teals, emerald */
+  --bg-deep: #0a1419;
+  --bg-navy: #0d1f26;
+  --bg-teal: #0f2830;
+  --surface: #14383d;
+  --border: rgba(72, 140, 140, 0.25);
+  --accent-teal: #2d9d9d;
+  --accent-emerald: #1a5c5c;
+  --luminous: #7ec8c8;
+  --text: #e8eeef;
+  --text-muted: #9fb5b8;
+  --warm: #d4a574;
+  --warm-light: #f0e0cc;
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--text);
+  background: var(--bg-deep);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+a {
+  color: var(--luminous);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--warm-light);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+input, textarea {
+  font-family: var(--font-body);
+}

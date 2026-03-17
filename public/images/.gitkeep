@@ -1,0 +1,8 @@
+# Place images here for local development, or set VITE_S3_BASE_URL in .env to use S3.
+# Expected files (or S3 paths):
+#   hero.jpg       - landing page hero artwork
+#   artist.jpg     - portrait of Alexa Kleinbard
+#   body-of-work-1/01.jpg, 02.jpg, ... (Body of Work 1)
+#   body-of-work-2/01.jpg, ...
+#   body-of-work-3/01.jpg, ...
+#   Alexa_Kleinbard_CV.pdf - CV download
