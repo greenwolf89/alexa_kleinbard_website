@@ -1,16 +1,18 @@
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
+import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import Work from './pages/Work'
 import BodyOfWork from './pages/BodyOfWork'
 import Openings from './pages/Openings'
 import OpeningDetail from './pages/OpeningDetail'
-import About from './pages/About'
+import About from './pages/AboutSummary'
 import Contact from './pages/Contact'
 
 function App() {
   return (
     <Layout>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/work" element={<Work />} />

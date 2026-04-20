@@ -16,91 +16,207 @@
   max-width: 60ch;
 }
 
-/* Variable-height grid: each tile fits its image (no stretched rows, no cropping) */
-.grid {
+.galleryFooter {
+  margin: 2.5rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border, rgba(255, 255, 255, 0.1));
+  max-width: 60ch;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.galleryMetaLine {
+  margin: 0;
+}
+
+.galleryMetaLine + .galleryMetaLine,
+.galleryMetaLine + .dimensionsMulti {
+  margin-top: 0.75rem;
+}
+
+.dimensionsMulti {
+  margin: 0;
+}
+
+.dimensionsMulti .dimensionsLabel {
+  margin: 0 0 0.35rem;
+}
+
+.dimensionsList {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.dimensionsList li {
+  margin: 0.2rem 0;
+}
+
+/* Prev/next body-of-work (Work listing order) */
+.seriesNav {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1rem;
-  grid-auto-rows: auto;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border, rgba(255, 255, 255, 0.1));
   align-items: start;
 }
 
-.tile {
-  overflow: hidden;
-  background: var(--bg-teal);
-  border-radius: 4px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  display: block;
-  line-height: 0;
+.seriesNavSlot {
+  min-width: 0;
 }
 
-.tile:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+.seriesNavLink {
+  display: block;
+  text-decoration: none;
+  color: var(--text);
+  transition: color 0.2s ease;
+}
+
+.seriesNavLink:hover {
+  color: var(--luminous);
+}
+
+.seriesNavLinkPrev {
+  text-align: left;
+}
+
+.seriesNavLinkNext {
+  text-align: right;
+  justify-self: end;
+  width: 100%;
+  max-width: 42ch;
+}
+
+.seriesNavLabel {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.seriesNavLink:hover .seriesNavLabel {
+  color: var(--accent-teal);
+}
+
+.seriesNavTitle {
+  display: block;
+  font-family: var(--font-gallery-title);
+  font-size: clamp(0.95rem, 2vw, 1.125rem);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.seriesNavChevron {
+  opacity: 0.9;
+}
+
+.seriesNavLinkPrev .seriesNavChevron {
+  margin-right: 0.4rem;
+}
+
+.seriesNavLinkNext .seriesNavChevron {
+  margin-left: 0.4rem;
+}
+
+@media (max-width: 560px) {
+  .seriesNav {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+  }
+
+  .seriesNavLinkNext {
+    text-align: left;
+    justify-self: stretch;
+    max-width: none;
+  }
+}
+
+/* Variable-height grid: each tile fits its image (no stretched rows, no cropping) */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  /* Left-align shrink-wrapped tiles so paintings in a column share one vertical edge */
+  justify-items: start;
+}
+
+.tile {
+  display: block;
+  min-width: 0;
+  width: fit-content;
+  max-width: 100%;
+}
+
+/* Shrink-wrap to the laid-out image width so titles never sit wider than the picture */
+.tileMedia {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .tileButton {
-  position: relative;
-  width: 100%;
+  width: max-content;
+  max-width: 100%;
   border: none;
   padding: 0;
   cursor: pointer;
   background: none;
   display: block;
   line-height: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  background: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Image as-is: natural dimensions, fill column width */
+.tileButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.tileButton:focus-visible {
+  outline: 2px solid var(--luminous);
+  outline-offset: 4px;
+}
+
+/* Image as-is; width follows intrinsic size up to column, height capped */
 .tileButton img {
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
   display: block;
   vertical-align: middle;
   object-fit: contain;
   object-position: top center;
+  max-height: 72vh;
 }
 
-/* Tile caption: name + materials/dimensions, left-aligned; visible on hover or when tileCaptionIndex set (touch) */
+/* Tile caption: same width as .tileMedia (image column) */
 .tileCaption {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 1rem;
-  background: rgba(10, 20, 25, 0.85);
+  box-sizing: border-box;
+  padding: 0.75rem 0 0;
   color: var(--text);
   text-align: left;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-}
-.tileCaptionVisible {
-  opacity: 1;
-  pointer-events: none;
+  width: 100%;
+  min-width: 0;
 }
 .tileCaptionName {
-  font-family: var(--font-heading);
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
-  line-height: 1.3;
-  margin-bottom: 0.35rem;
-  margin-left: 6px;
-}
-.tileCaptionMeta {
-  font-size: 0.85em;
-  color: var(--text-muted);
-  line-height: 1.3;
-  margin-left: 6px;
-}
-@media (hover: hover) {
-  .tile:hover .tileCaption {
-    opacity: 1;
-  }
-}
-@media (hover: none) {
-  .tileCaption {
-    pointer-events: auto;
-  }
+  display: block;
+  font-family: var(--font-gallery-title);
+  font-size: clamp(1.0625rem, 2.85vw, 1.375rem);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  margin-bottom: 0;
+  margin-left: 0;
+  overflow-wrap: anywhere;
 }
 
 /* Fallback when image fails to load: open/download link */
@@ -136,50 +252,73 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   max-width: 100%;
   max-height: 90vh;
+  min-width: 0;
 }
 
-.lightbox img,
-.lightboxImage {
-  max-width: 100%;
-  max-height: 82vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  cursor: default;
+/* Block stack like .tileMedia so shrink-to-fit width matches the image, not the caption */
+.lightboxMedia {
   display: block;
+  width: fit-content;
+  max-width: 100%;
+  max-height: 90vh;
+  min-width: 0;
+}
+
+/* Same sizing idea as .tileButton: establishes width for img % and max-height */
+.lightboxFigure {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  min-width: 0;
+  line-height: 0;
+}
+
+.lightboxFigure .lightboxImage {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 82vh;
+  object-fit: contain;
+  object-position: top center;
+  cursor: default;
+  vertical-align: top;
 }
 
 /* Lightbox caption at bottom of image; visible on hover or tap (touch) */
 .lightboxCaption {
+  box-sizing: border-box;
   width: 100%;
   max-width: 100%;
-  padding: 0.75rem 0 0.75rem 10px;
+  padding: 0.75rem 0;
   text-align: left;
   background: rgba(10, 20, 25, 0.9);
   color: var(--text);
   opacity: 0;
   transition: opacity 0.2s ease;
   margin-top: 0;
+  min-width: 0;
+  overflow-x: hidden;
 }
 .lightboxCaptionVisible {
   opacity: 1;
 }
 .lightboxCaptionName {
   display: block;
-  font-family: var(--font-heading);
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  line-height: 1.3;
-  margin-bottom: 0.25rem;
-  margin-left: 6px;
-}
-.lightboxCaptionMeta {
-  display: block;
-  font-size: 0.85em;
-  color: var(--text-muted);
-  line-height: 1.3;
-  margin-left: 6px;
+  font-family: var(--font-gallery-title);
+  font-size: clamp(1.085rem, 2.35vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
 }
 @media (hover: hover) {
   .lightbox:hover .lightboxCaption {
@@ -264,6 +403,18 @@
 @media (max-width: 640px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 0.75rem;
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 700px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }

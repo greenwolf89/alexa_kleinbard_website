@@ -6,7 +6,7 @@ import styles from './Work.module.css'
 export default function Work() {
   return (
     <div className={styles.page}>
-      <h1 className={styles.pageTitle}>Work</h1>
+      <h1 className={styles.pageTitle}>Selected Works</h1>
       <div className={styles.grid}>
         {bodiesOfWork.map((body) => {
           const thumbPath = body.images[0]?.fullPath
@@ -25,9 +25,9 @@ export default function Work() {
                 )}
               </div>
               <h2 className={styles.cardTitle}>{body.title}</h2>
-              {body.description && (
-                <p className={styles.cardYears}>{body.description}</p>
-              )}
+              {body.years?.trim() ? (
+                <p className={styles.cardYears}>{body.years}</p>
+              ) : null}
             </Link>
           )
         })}

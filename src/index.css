@@ -13,6 +13,8 @@
   --warm: #d4a574;
   --warm-light: #f0e0cc;
   --font-heading: 'Cormorant Garamond', Georgia, serif;
+  /** Gallery painting titles: readable at small sizes but more expressive than UI sans */
+  --font-gallery-title: 'Lora', Georgia, serif;
   --font-body: 'Outfit', system-ui, sans-serif;
 }
 

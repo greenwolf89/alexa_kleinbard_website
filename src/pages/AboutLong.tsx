@@ -32,7 +32,7 @@ const PARAGRAPHS = [
     <>I have always been drawn, from my early years, starting with Kipling’s stories, to books involving nature. One favorite author, the great entomologist, E.O. Wilson, came out with a new very moving book, called Half Earth. The book’s essential message is that we must preserve biodiversity for half the planet in order to survive. He suggests saving these wild places and only allowing scientists to go there while the rest of us observe them virtually. Over many years I have been inspired by nature writers, exploring of nature, and psychological narrative. I have always found it important to use everything in my background as I weave all this together into a tapestry that tells the story of a place, its inhabitants, and its emotion, while hopefully inspiring others to help preserve and protect nature for future generations of life. Heart and Brush, Alexa Kleinbard</>,
 ]
 
-export default function About() {
+export default function AboutLong() {
     const [page, setPage] = useState(1)
     const totalPages = Math.ceil(PARAGRAPHS.length / PARAS_PER_PAGE)
     const start = (page - 1) * PARAS_PER_PAGE
@@ -49,7 +49,7 @@ export default function About() {
                     styles.artistImageWrap
                 }>
                     <img src={
-                            imageUrl('artist2.jpg')
+                            imageUrl('artist.jpg')
                         }
                         alt="Alexa Kleinbard"
                         className={
@@ -62,38 +62,52 @@ export default function About() {
                     <h1 className={
                         styles.title
                     }>About the Artist</h1>
-                    {visibleParagraphs.map((content, i) => (
-                        <p key={start + i}>{content}</p>
-                    ))}
-                    {totalPages > 1 && (
-                        <nav
-                            className={styles.pagination}
-                            aria-label="About text pagination"
-                        >
-                            <button
-                                type="button"
-                                className={styles.paginationButton}
-                                onClick={() => setPage((p: number) => Math.max(1, p - 1))}
-                                disabled={page <= 1}
-                            >
+                    {
+                    visibleParagraphs.map((content, i) => (
+                        <p key={
+                            start + i
+                        }>
+                            {content}</p>
+                    ))
+                }
+                    {
+                    totalPages > 1 && (
+                        <nav className={
+                                styles.pagination
+                            }
+                            aria-label="About text pagination">
+                            <button type="button"
+                                className={
+                                    styles.paginationButton
+                                }
+                                onClick={
+                                    () => setPage((p) => Math.max(1, p - 1))
+                                }
+                                disabled={
+                                    page <= 1
+                            }>
                                 Previous
                             </button>
-                            <span className={styles.paginationInfo}>
-                                Page {page} of {totalPages}
-                            </span>
-                            <button
-                                type="button"
-                                className={styles.paginationButton}
-                                onClick={() =>
-                                    setPage((p: number) => Math.min(totalPages, p + 1))
+                            <span className={
+                                styles.paginationInfo
+                            }>
+                                Page {page}
+                                of {totalPages} </span>
+                            <button type="button"
+                                className={
+                                    styles.paginationButton
                                 }
-                                disabled={page >= totalPages}
-                            >
+                                onClick={
+                                    () => setPage((p) => Math.min(totalPages, p + 1))
+                                }
+                                disabled={
+                                    page >= totalPages
+                            }>
                                 Next
                             </button>
                         </nav>
-                    )}
-                </div>
+                    )
+                } </div>
             </section>
         </div>
     )

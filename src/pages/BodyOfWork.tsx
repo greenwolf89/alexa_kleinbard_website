@@ -12,18 +12,14 @@ export default function BodyOfWork() {
   return (
     <div className={styles.page}>
       <Link to="/work" className={styles.backLink}>
-        ← Work
+        ←
       </Link>
       <h1 className={styles.title}>{body.title}</h1>
-      {body.description && (
-        <p className={styles.years}>{body.description}</p>
-      )}
-      {(body.introParagraph ?? true) && (
-        <p className={styles.paragraph}>
-          {body.introParagraph || 'A selection of works from this body of work.'}
-        </p>
-      )}
-      <Gallery body={body} showHeading={false} />
+      {body.years?.trim() ? <p className={styles.years}>{body.years}</p> : null}
+      {body.description?.trim() ? (
+        <p className={styles.paragraph}>{body.description}</p>
+      ) : null}
+      <Gallery body={body} showHeading={false} seriesNavBodies={bodiesOfWork} />
     </div>
   )
 }

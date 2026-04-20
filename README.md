@@ -80,7 +80,7 @@ The contact form posts to [Formspree](https://formspree.io) so you don’t need 
 
 ## Content configuration
 
-- **Bodies of work:** Edit `src/config/galleryMapper.ts`. Set each body’s `folder`, `title`, `description`, `featured`, and `images` (filenames only; use .jpg or .png so they display in the browser).
+- **Bodies of work:** Edit `src/config/galleryMapper.ts`. Set each body’s `folder`, `title`, `years`, `description` (intro paragraph on the body page), `featured`, and `images` (filenames only; use .jpg or .png so they display in the browser).
 - **CV:** Upload `Alexa_Kleinbard_CV.pdf` to `public/images/` or to S3 at the path in `site.cvPath`. Update `site.cvFileName` if the download name should differ.
 - **Publications & openings:** Edit `publications` and `openings` arrays in `src/config/site.ts` with real links and labels.
 

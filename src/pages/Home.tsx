@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Hero from '../components/Hero'
-import { site, publications } from '../config/site'
-import { homeHeroPath, homeMapper } from '../config/homeMapper'
+import { site } from '../config/site'
+import { homeHeroNarrowPath, homeHeroWidePath, homeMapper } from '../config/homeMapper'
 import { imageUrl } from '../config/images'
 import styles from './Home.module.css'
 
@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <>
       <section className={styles.heroSection}>
-        <Hero artworkPath={homeHeroPath()} />
+        <Hero artworkPath={homeHeroWidePath()} artworkPathNarrow={homeHeroNarrowPath()} />
         <div
           className={styles.heroOverlay}
           data-visible={overlayVisible}
@@ -53,19 +53,9 @@ export default function Home() {
           </a>
         </div>
         <div className={styles.linksBlock}>
-          <h3>Publications</h3>
-          <ul>
-            {publications.map((p, i) => (
-              <li key={i}>
-                <a href={p.url} target="_blank" rel="noopener noreferrer">{p.label}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className={styles.linksBlock}>
-          <h3>Openings &amp; exhibitions</h3>
+          <h3>Exhibitions</h3>
           <p className={styles.linksNote}>
-            <Link to="/openings">View openings and exhibitions</Link>
+            <Link to="/openings">View exhibitions</Link>
           </p>
         </div>
       </section>

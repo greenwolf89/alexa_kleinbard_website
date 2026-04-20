@@ -6,7 +6,17 @@ import styles from './Openings.module.css'
 export default function Openings() {
   return (
     <div className={styles.page}>
-      <h1 className={styles.pageTitle}>Openings / Exhibitions</h1>
+      <h1 className={styles.pageTitle}>Exhibitions</h1>
+      <div className={styles.videoEmbed}>
+        <iframe
+          src="https://www.youtube.com/embed/wDcnAl-P8jc?si=01LS-HZgqX1XWMVu"
+          title="YouTube video player"
+          frameBorder={0}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
+      </div>
       <div className={styles.grid}>
         {openings.map((opening) => {
           const thumbPath = opening.body?.images[0]?.fullPath

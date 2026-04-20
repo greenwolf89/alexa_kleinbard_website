@@ -7,10 +7,11 @@
 export const homeMapper = {
   /** S3 folder name, or '' for root (e.g. public/images/) */
   folder: '',
-  /** Hero artwork filename */
-  hero: 'hero.jpeg',
+  /** Hero artwork filenames (responsive) */
+  heroWide: 'heroWide.jpeg',
+  heroNarrow: 'heroNarrow.jpg',
   /** Artist portrait filename */
-  artist: 'artist.jpg',
+  artist: 'artist2.jpg',
   /** Optional extra images for home; add filenames when needed */
   additionalImages: [] as string[],
 
@@ -22,13 +23,7 @@ export const homeMapper = {
     `Alexa Kleinbard’s spectacular work is created
       from the premise that humans are in and of
       Nature, that Nature is not separate from or
-      controllable by humans. In her view, we reside
-      in the garden of nature but are not the owners
-      of it. The beautiful and seductive works in this
-      exhibition serve to shine a light on the now
-      unavoidable fact that we are in the process of
-      destroying this incredible garden that is our
-      home.`,
+      controllable by humans.`,
         `“I hope the paintings, with their close up view of a healing plant and their faraway
     view of a silent world, will offer the viewer a chance to ponder the future of our
     planet. By being provocative and strong enough visually, perhaps these works
@@ -53,8 +48,12 @@ function pathFrom(folder: string, filename: string): string {
 }
 
 /** Full path for hero image (for imageUrl / Hero artworkPath) */
-export function homeHeroPath(): string {
-  return pathFrom(homeMapper.folder, homeMapper.hero)
+export function homeHeroWidePath(): string {
+  return pathFrom(homeMapper.folder, homeMapper.heroWide)
+}
+
+export function homeHeroNarrowPath(): string {
+  return pathFrom(homeMapper.folder, homeMapper.heroNarrow)
 }
 
 /** Full path for artist image (for imageUrl / Hero artistPath) */

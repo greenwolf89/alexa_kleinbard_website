@@ -12,7 +12,7 @@ export default function OpeningDetail() {
   return (
     <div className={styles.page}>
       <Link to="/openings" className={styles.backLink}>
-        ← Openings / Exhibitions
+        ← Exhibitions
       </Link>
       <h1 className={styles.title}>{opening.title}</h1>
       {opening.date && (
